@@ -8,6 +8,8 @@ set listchars=eol:§,tab:<->,trail:~,extends:>,precedes:<  ",space:
 set guifont=Consolas:h10
 set mouse=a         " Mouse on all previous modes
 set fileencoding=utf8
+set wrap
+set linebreak
 
 " Remove beeps
 set noerrorbells    " Beep or flash screen on errors
@@ -106,6 +108,7 @@ let g:currentmode={
     \ 't'      : 'Terminal '
     \}
 
+" Credits to https://www.maketecheasier.com/turn-vim-word-processor/
 func! WordProcessor()
   " movement changes
   map j gj
@@ -116,7 +119,7 @@ func! WordProcessor()
   setlocal wrap
   setlocal linebreak
   " spelling and thesaurus
-  setlocal spell spelllang=it,en_UK,pt_PT
+  setlocal spell spelllang=it,en_UK,pt_BR
   set thesaurus+=/home/test/.vim/thesaurus/mthesaur.txt
   " complete+=s makes autocompletion search the thesaurus
   set complete+=s
@@ -133,5 +136,3 @@ set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
 " 
 
 com! WP call WordProcessor()
-"com! WP call WordProcessor(1) 
-"com! noWP call WordProcessor(0) " Undo wordprocessor mode

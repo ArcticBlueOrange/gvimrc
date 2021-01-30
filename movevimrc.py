@@ -1,4 +1,5 @@
 import os, sys
+import shutil
 
 """
 Gvimrc manager
@@ -26,7 +27,7 @@ filepath = f"{settings['gitpath']}\\{settings_filename}"
 
 try:
     with open(filepath, 'r') as sfn:
-        rows = sfn.readlines()
+        rows = sfn.read().splitlines()
         settings['filename'] = rows[0]
         settings['rcpath']   = rows[1]
         settings['gitpath']  = rows[2]
@@ -57,10 +58,18 @@ if __name__ == "__main__":
     cont = True
     while cont:
         print("Select the operation you want to do")
-        print(f"1 for moving {settings['filename']} from git to source")
-        print(f"2 for moving {settings['filename']} from source to git")
+        print(f"1 for moving {settings['filename']} from {settings['gitpath']} to {settings['rcpath']}")
+        print(f"2 for moving {settings['filename']} from {settings['rcpath']} to {settings['gitpath']}")
         ans = input()
-        if ans in ['1','2']:
+        if ans == '1':
+            print(f"Copying {settings['filename']} from {settings['gitpath']}...")
+            shutil.copyfile( f"{settings['gitpath']}{settings['filename']}", f"{settings['rcpath']}{settings['filename']}" )
+            print(f"\t...Pasted into {settings['rcpath']}")
+            cont = False
+        elif ans == '2':
+            print(f"Copying {settings['filename']} from {settings['rcpath']}...")
+            shutil.copyfile( f"{settings['rcpath']}{settings['filename']}", f"{settings['gitpath']}{settings['filename']}" )
+            print(f"\t...Pasted into {settings['gitpath']}")
             cont = False
 
 #print(settings)
