@@ -1,0 +1,6 @@
+" Vim backup files
+*.sw[op]
+*~
+
+" Settings file
+movevimrc_settings.txt
