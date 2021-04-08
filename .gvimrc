@@ -1,6 +1,6 @@
 " GUI General Options
 
-colorscheme torte " elflord desert
+colorscheme torte   " elflord desert
 set number          " Show line numbers
 set relativenumber  " Show relative line numbers
 set list            " Not sure what this does
@@ -41,14 +41,6 @@ if !isdirectory($HOME."/.cache")
 endif
 set backupdir=~/.cache
 set directory=~/.cache
-"set nobackup        " Easy option - no backup clutter
-"set nowritebackup   " 
-"set noswapfile
-"https://vim.fandom.com/wiki/Remove_swap_and_backup_files_from_your_working_directory " It still creates the ~ file, but every time you fire up VIM it nukes all the old junk. And if for some wierd reason you actually need the ~ file you can go back into the temp folder and rescue it before starting VIM
-" Creates issues atm
-" set backupdir="C:\\Users\\brand\\temp\\"
-" set directory="C:\\Users\\brand\\temp\\"
-"silent execute '!del "'.$VIMRUNTIME.'\temp\*~"'
 
 
 "'''''''''''''''''''''''''' Functions ''''''''''''''''''''''''
@@ -132,6 +124,13 @@ func! WordProcessor()
   set nonu nornu  "Hides row display
 endfu
 
+func NoWordProcessor()
+  " restores original behavior
+  map j j
+  map k k
+  set nu rnu
+endfu
+
 
 " Call functions
 set laststatus=2                                         " 2 -> Always display statline
@@ -142,3 +141,4 @@ set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
 " 
 
 com! WP call WordProcessor()
+com! NWP call NoWordProcessor()
