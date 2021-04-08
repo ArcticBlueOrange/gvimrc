@@ -7,6 +7,7 @@ set list            " Not sure what this does
 set listchars=eol:§,tab:<->,trail:~,extends:>,precedes:<  ",space: 
 set guifont=Consolas:h10
 set mouse=a         " Mouse on all previous modes
+set encoding=utf-8
 set fileencoding=utf8
 set wrap
 set linebreak
