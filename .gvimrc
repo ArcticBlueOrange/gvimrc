@@ -36,13 +36,18 @@ set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
 " Backup-related options
-set nobackup        " Easy option - no backup clutter
-set nowritebackup   " 
-set noswapfile
+if !isdirectory($HOME."/.cache")
+  call mkdir($HOME."/.cache", "p", 0700)
+endif
+set backupdir=~/.cache
+set directory=~/.cache
+"set nobackup        " Easy option - no backup clutter
+"set nowritebackup   " 
+"set noswapfile
 "https://vim.fandom.com/wiki/Remove_swap_and_backup_files_from_your_working_directory " It still creates the ~ file, but every time you fire up VIM it nukes all the old junk. And if for some wierd reason you actually need the ~ file you can go back into the temp folder and rescue it before starting VIM
 " Creates issues atm
-"set backupdir=$VIMRUNTIME\\temp\\
-"set directory=$VIMRUNTIME\\temp\\
+" set backupdir="C:\\Users\\brand\\temp\\"
+" set directory="C:\\Users\\brand\\temp\\"
 "silent execute '!del "'.$VIMRUNTIME.'\temp\*~"'
 
 
@@ -115,11 +120,12 @@ func! WordProcessor()
   map k gk
   " formatting text
   setlocal formatoptions=1
-  setlocal noexpandtab
+  "setlocal noexpandtab
   setlocal wrap
   setlocal linebreak
+  setlocal listchars=tab:<->,trail:~,extends:>,precedes:<
   " spelling and thesaurus
-  setlocal spell spelllang=it,en_UK,pt_BR
+  setlocal spell spelllang=it,en_us,pt
   set thesaurus+=/home/test/.vim/thesaurus/mthesaur.txt
   " complete+=s makes autocompletion search the thesaurus
   set complete+=s
