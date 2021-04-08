@@ -113,10 +113,9 @@ func! WordProcessor()
   map k gk
   " formatting text
   setlocal formatoptions=1
-  "setlocal noexpandtab
-  setlocal wrap
-  setlocal linebreak
-  setlocal listchars=tab:<->,trail:~,extends:>,precedes:<
+  " setlocal wrap
+  " setlocal linebreak
+  " setlocal listchars=tab:<->,trail:~,extends:>,precedes:<
   " spelling and thesaurus
   setlocal spell spelllang=it,en_us,pt
   set thesaurus+=/home/test/.vim/thesaurus/mthesaur.txt
@@ -126,12 +125,21 @@ func! WordProcessor()
 endfu
 
 func NoWordProcessor()
-  " restores original behavior
+  " Undo changes
   map j j
   map k k
-  set nu rnu
+  " formatting text
+  setlocal formatoptions=1
+  " setlocal wrap
+  " setlocal linebreak
+  " setlocal listchars=tab:<->,trail:~,extends:>,precedes:<
+  " spelling and thesaurus
+  setlocal nospell " spelllang=it,en_us,pt
+  " complete+=s makes autocompletion search the thesaurus
+  set complete+=s
+  set nu rnu  "Hides row display
+  " restores original behavior
 endfu
-
 
 " Call functions
 set laststatus=2                                         " 2 -> Always display statline
@@ -143,3 +151,4 @@ set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
 
 com! WP call WordProcessor()
 com! NWP call NoWordProcessor()
+call NoWordProcessor()
