@@ -11,6 +11,7 @@ set encoding=utf-8
 set fileencoding=utf8
 set wrap
 set linebreak
+syntax on
 
 " Remove beeps
 set noerrorbells    " Beep or flash screen on errors
@@ -111,6 +112,7 @@ func! WordProcessor()
   " movement changes
   map j gj
   map k gk
+  colorscheme darkblue
   " formatting text
   setlocal formatoptions=1
   " setlocal wrap
@@ -128,6 +130,7 @@ func NoWordProcessor()
   " Undo changes
   map j j
   map k k
+  colorscheme torte   " elflord desert
   " formatting text
   setlocal formatoptions=1
   " setlocal wrap
