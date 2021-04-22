@@ -44,7 +44,8 @@ endif
 set backupdir=~/.cache
 set directory=~/.cache
 
-
+" Remaps
+nnoremap <NL> i<CR><ESC> " Ctrl-J to break a line
 "'''''''''''''''''''''''''' Functions ''''''''''''''''''''''''
 
 " Function to dinamycally change the status line color
