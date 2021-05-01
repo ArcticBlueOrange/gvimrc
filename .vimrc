@@ -152,6 +152,7 @@ endfu
 " Call functions
 " set statusline+=\ %f                                    " show filename
 set laststatus=2                                        " 2 -> Always display statline
+set statusline=                                        " Reset st ln (gic)
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}  " Current mode
 set statusline+=%F                                      " show fullpath filename
 set statusline+=\ %y                                    " Show file type
