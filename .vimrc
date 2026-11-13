@@ -4,7 +4,7 @@ colorscheme torte   " elflord desert
 set number          " Show line numbers
 set relativenumber  " Show relative line numbers
 set list            " Not sure what this does
-set listchars=eol:§,tab:<->,trail:~,extends:>,precedes:<  ",space: 
+set listchars=eol:Â§,tab:<->,trail:~,extends:>,precedes:<  ",space: 
 set guifont=Consolas:h10
 set mouse=a         " Mouse on all previous modes
 set encoding=utf-8
@@ -53,7 +53,7 @@ function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
     "exe 'hi! StatusLine guibg=Salmon'
     hi StatusLine guibg=Salmon
-  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
+  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'VÂ·Block' || get(g:currentmode, mode(), '') ==# 't')
     hi StatusLine guibg=Green
   elseif (mode() ==# 'i')
     hi StatusLine guibg=Purple
@@ -88,17 +88,17 @@ endfunction
 " Function to transform vim in a word processor
 let g:currentmode={
     \ 'n'      : 'N ',
-    \ 'no'     : 'N·Operator Pending ',
+    \ 'no'     : 'NÂ·Operator Pending ',
     \ 'v'      : 'V ',
-    \ 'V'      : 'V·Line ',
-    \ '\<C-V>' : 'V·Block ',
-    \ ''     : 'V·Block ',
+    \ 'V'      : 'VÂ·Line ',
+    \ '\<C-V>' : 'VÂ·Block ',
+    \ ''     : 'VÂ·Block ',
     \ 's'      : 'Select ',
-    \ 'S'      : 'S·Line ',
-    \ '\<C-S>' : 'S·Block ',
+    \ 'S'      : 'SÂ·Line ',
+    \ '\<C-S>' : 'SÂ·Block ',
     \ 'i'      : 'I ',
     \ 'R'      : 'R ',
-    \ 'Rv'     : 'V·Replace ',
+    \ 'Rv'     : 'VÂ·Replace ',
     \ 'c'      : 'Command ',
     \ 'cv'     : 'Vim Ex ',
     \ 'ce'     : 'Ex ',
